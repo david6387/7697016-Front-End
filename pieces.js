@@ -13,7 +13,7 @@ prixElement.innerText = `Prix: ${article.prix} € (${
   article.prix < 35 ? "€" : "€€€"
 })`;
 const categorieElement = document.createElement("p");
-categorieElement.innerText = article.categorie;
+categorieElement.innerText = article.categorie ?? "(aucune catégorie)";
 
 // Rattacher les éléments au reste du document
 // rattachement des balises au DOM
