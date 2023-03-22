@@ -2,6 +2,7 @@
 const response = await fetch("pieces-autos.json");
 const pieces = await response.json();
 
+// création des balises avec createElement
 const article = pieces[0];
 const imageElement = document.createElement("img");
 imageElement.src = article.image;
@@ -14,7 +15,10 @@ prixElement.innerText = `Prix: ${article.prix} € (${
 const categorieElement = document.createElement("p");
 categorieElement.innerText = article.categorie;
 
+// Rattacher les éléments au reste du document
+// rattachement des balises au DOM
 const sectionFiches = document.querySelector(".fiches");
+
 sectionFiches.appendChild(imageElement);
 sectionFiches.appendChild(nomElement);
 sectionFiches.appendChild(prixElement);
