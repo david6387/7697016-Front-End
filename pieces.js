@@ -42,10 +42,17 @@ for (let i = 0; i < pieces.length; i++) {
   pieceElement.appendChild(stockElement);
 }
 
-const boutonTrier = document.querySelector(".btn_trier");
+//gestion des boutons
+
+const boutonTrier = document.querySelector(".btn-trier");
+
 boutonTrier.addEventListener("click", function () {
-  const piecesFiltrees = pieces.filter(function (piece) {
-    return piece.prix <= 35;
+  const piecesOrdonnees = Array.from(pieces);
+  piecesOrdonnees.sort(function (a, b) {
+    return a.prix - b.prix;
+
+    // const piecesFiltrees = pieces.filter(function (piece) {
+    //   return piece.prix <= 35;
   });
-  //
+  console.log(piecesOrdonnees);
 });
