@@ -50,9 +50,35 @@ boutonTrier.addEventListener("click", function () {
   const piecesOrdonnees = Array.from(pieces);
   piecesOrdonnees.sort(function (a, b) {
     return a.prix - b.prix;
-
-    // const piecesFiltrees = pieces.filter(function (piece) {
-    //   return piece.prix <= 35;
   });
   console.log(piecesOrdonnees);
+});
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function () {
+  const piecesFiltrees = pieces.filter(function (piece) {
+    return piece.prix <= 35;
+  });
+  console.log(piecesFiltrees);
+});
+
+// exercice
+
+const boutonDecroissant = document.querySelector(".btn-decroissant");
+
+boutonDecroissant.addEventListener("click", () => {
+  const piecesOrdonnees = Array.from(pieces);
+  piecesOrdonnees.sort(function (a, b) {
+    return b.prix - a.prix;
+  });
+  console.log(piecesOrdonnees);
+});
+
+const boutonDescription = document.querySelector(".btn-nodesc");
+
+boutonDescription.addEventListener("click", () => {
+  const piecesFiltrees = pieces.filter((piece) => {
+    return piece.description;
+  });
+  console.log(piecesFiltrees);
 });
