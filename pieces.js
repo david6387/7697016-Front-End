@@ -14,9 +14,12 @@ prixElement.innerText = `Prix : ${article.prix} € (${
 })`;
 const categorieElement = document.createElement("p");
 categorieElement.innerText = article.categorie ?? "(aucune catégorie)";
+
+//Création des élements pour l'exercice
 const descriptionElement = document.createElement("p");
 descriptionElement.innerText =
   article.description ?? "(Pas de description pour le moment.)";
+
 const disponibiliteElement = document.createElement("p");
 disponibiliteElement.innerText = article.disponibilite
   ? "En stock"
