@@ -24,8 +24,8 @@ for (let i = 0; i < pieces.length; i++) {
   const descriptionElement = document.createElement("p");
   descriptionElement.innerText =
     article.description ?? "(Pas de description pour le moment.)";
-  const disponibiliteElement = document.createElement("p");
-  disponibiliteElement.innerText = article.disponibilite
+  const stockElement = document.createElement("p");
+  stockElement.innerText = article.disponibilite
     ? "En stock"
     : "Rupture de stock";
 
@@ -39,5 +39,5 @@ for (let i = 0; i < pieces.length; i++) {
   pieceElement.appendChild(prixElement);
   pieceElement.appendChild(categorieElement);
   pieceElement.appendChild(descriptionElement);
-  pieceElement.appendChild(disponibiliteElement);
+  pieceElement.appendChild(stockElement);
 }
