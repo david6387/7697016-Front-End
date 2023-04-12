@@ -82,3 +82,15 @@ boutonDescription.addEventListener("click", () => {
   });
   console.log(piecesFiltrees);
 });
+
+// Projetez des données avec la fonction map
+
+// Fonction lambda
+const noms = pieces.map((piece) => piece.nom);
+console.log(noms);
+
+// Fonction normale/classique
+// const noms = pieces.map((piece) => {
+//   return piece.nom;
+// });
+// console.log(noms);
