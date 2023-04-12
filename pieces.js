@@ -12,7 +12,7 @@ for (let i = 0; i < pieces.length; i++) {
 
   // création des balises avec createElement
   const imageElement = document.createElement("img");
-  imageElement.src = article.image;
+  imageElement.src = pieces[i].image; /* OU imageElement.src = article.image; */
   const nomElement = document.createElement("h2");
   nomElement.innerText = article.nom;
   const prixElement = document.createElement("p");
@@ -41,3 +41,11 @@ for (let i = 0; i < pieces.length; i++) {
   pieceElement.appendChild(descriptionElement);
   pieceElement.appendChild(stockElement);
 }
+
+const boutonTrier = document.querySelector(".btn_trier");
+boutonTrier.addEventListener("click", function () {
+  const piecesFiltrees = pieces.filter(function (piece) {
+    return piece.prix <= 35;
+  });
+  //
+});
