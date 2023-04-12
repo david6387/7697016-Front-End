@@ -109,11 +109,22 @@ for (let i = 0; i < noms.length; i++) {
 }
 document.querySelector(".abordables").appendChild(abordablesElements);
 
+const nomsDisponibles = pieces.map((piece) => piece.nom);
+const prixDisponibles = pieces.map((piece) => piece.prix);
+
+for (let i = pieces.length - 1; i >= 0; i--) {
+  if (pieces[i].disponibilite === false) {
+    nomsDisponibles.splice(i, 1);
+    prixDisponibles.splice(i, 1);
+  }
+}
+
 const disponiblesElements = document.createElement("ul");
-for (let i = 0; i < noms.length; i++) {
-  const disponibiliteElement = document.createElement("li");
-  (disponibiliteElement.innerText = noms[i]), prix[i];
-  disponiblesElements.appendChild(disponibiliteElement);
+
+for (let i = 0; i < nomsDisponibles.length; i++) {
+  const nomElement = document.createElement("li");
+  nomElement.innerText = `${nomsDisponibles[i]} - ${prixDisponibles[i]} €`;
+  disponiblesElements.appendChild(nomElement);
 }
 
 document.querySelector(".disponibles").appendChild(disponiblesElements);
