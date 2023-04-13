@@ -53,6 +53,7 @@ boutonTrier.addEventListener("click", function () {
   });
   console.log(piecesOrdonnees);
 });
+
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 
 boutonFiltrer.addEventListener("click", function () {
