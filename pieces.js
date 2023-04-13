@@ -128,3 +128,6 @@ for (let i = 0; i < nomsDisponibles.length; i++) {
 }
 
 document.querySelector(".disponibles").appendChild(disponiblesElements);
+
+// Efface le contenu de la balise body et donc l’écran
+// document.querySelector(".fiches").innerHTML = '';
