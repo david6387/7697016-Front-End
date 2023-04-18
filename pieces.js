@@ -138,7 +138,7 @@ document
 
 const inputPrixMax = document.querySelector("#prix-max");
 inputPrixMax.addEventListener("input", () => {
-  const piecesFiltrees = pieces.fiter((piece) => {
+  const piecesFiltrees = pieces.filter((piece) => {
     return piece.prix <= inputPrixMax.ariaValueMax;
   });
   document.querySelector(".fiches").innerHTML = "";
