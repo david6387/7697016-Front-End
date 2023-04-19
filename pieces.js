@@ -146,6 +146,13 @@ inputPrixMax.addEventListener("input", () => {
 });
 // ----------------------------------------- Exercice modèle pour la 1ere partie du cours
 
+// La méthode map() crée un nouveau tableau avec les résultats
+// de l'appel d'une fonction fournie sur chaque élément du tableau
+// appelant. Exemple:
+// const price = [1.99, 5, 1.2, 3.5];
+// const map1 = price.map((p) => p * 1.2);
+// console.log(map1);
+
 // // Récupération des pièces depuis le fichier JSON
 // const response = await fetch("pieces-autos.json");
 // const pieces = await response.json();
