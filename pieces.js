@@ -1,3 +1,5 @@
+import { ajoutListenersAvis } from "./avis.js";
+
 const pieces = await fetch("pieces-autos.json").then((pieces) => pieces.json());
 
 function genererPieces(pieces) {
@@ -38,6 +40,7 @@ function genererPieces(pieces) {
     pieceElement.appendChild(stockElement);
     /*document.body.appendChild(pieceElement);*/
   }
+  ajoutListenersAvis();
 }
 genererPieces(pieces);
 
