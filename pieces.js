@@ -111,8 +111,8 @@ document
   .appendChild(abordablesElements);
 
 //Code Exercice
-const nomsDisponibles = pieces.map((piece) => pieces.nom);
-const prixDisponibles = pieces.map((piece) => pieces.prix);
+const nomsDisponibles = pieces.map((piece) => piece.nom);
+const prixDisponibles = pieces.map((piece) => piece.prix);
 
 for (let i = pieces.length - 1; i >= 0; i--) {
   if (pieces[i].disponibilite === false) {
