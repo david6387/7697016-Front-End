@@ -18,3 +18,23 @@ export function ajoutListenersAvis() {
     });
   }
 }
+export function ajoutListenerEnvoyerAvis() {
+  const formulaireAvis = document.querySelector(".formulaire-avis");
+  formulaireAvis.addEventListener("submit", function (event) {
+    event.preventDefault();
+    // création de l'objet du nouvel avis
+    const avis = {
+      pieceId: parsInt(event.target.querySelector("[name=piece-id]").value),
+      utilisateur: event.target.querySelector("[name=utilisateur").value,
+      commentaire: event.target.querySelector("[name=commentaire]").value,
+    };
+    // création de la charge utile au format JSON
+    const chargeUtile = JSON.stringify(avis);
+    // appel de la fonction fetch avec toites les informations nécessaires
+    fetch("http://localhost:8081/avis", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: chargeUtile,
+    });
+  });
+}
