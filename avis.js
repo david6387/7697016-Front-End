@@ -8,16 +8,20 @@ export function ajoutListenersAvis() {
         "http://localhost:8081/pieces/" + id + "/avis"
       );
       const avis = await reponse.json();
+      window.localStorage.setItem(`avis-piece-${id}`, JSON.stringify(avis));
       const pieceElement = event.target.parentElement;
-
-      const avisElement = document.createElement("p");
-      for (let i = 0; i < avis.length; i++) {
-        avisElement.innerHTML += `<b>${avis[i].utilisateur}:</b> ${avis[i].commentaire}
-        </br> ${avis[i].nbEtoiles} <br>`;
-      }
-      pieceElement.appendChild(avisElement);
+      afficherAvis(pieceElement, avis);
     });
   }
+}
+
+export function afficherAvis(pieceElement) {
+  const avisElement = document.createElement("p");
+  for (let i = 0; i < avis.length; i++) {
+    avisElement.innerHTML += `<b>${avis[i].utilisateur}:</b> ${avis[i].commentaire}
+    </br> ${avis[i].nbEtoiles} <br>`;
+  }
+  pieceElement.appendChild(avisElement);
 }
 export function ajoutListenerEnvoyerAvis() {
   const formulaireAvis = document.querySelector(".formulaire-avis");
