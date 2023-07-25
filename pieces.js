@@ -1,8 +1,17 @@
 import { ajoutListenersAvis, ajoutListenerEnvoyerAvis } from "./avis.js";
+let pieces = window.localStorage.getItem("pieces");
 
-// Récupération des pièces depuis le fichier JSON
-const reponse = await fetch("http://localhost:8081/pieces");
-const pieces = await reponse.json();
+if (pieces === null) {
+  // Récupération des pièces depuis le fichier JSON
+  const reponse = await fetch("http://localhost:8081/pieces");
+  pieces = await reponse.json();
+  // transformation des pièces en JSON
+  const valeurPieces = JSON.stringify(pieces);
+  // stockage des informations dans le localStorage
+  window.localStorage.setItem("pieces", valeurPieces);
+} else {
+  pieces = JSON.parse(pieces);
+}
 // appel de la fonction pour ajouter le listener au formulaire
 ajoutListenerEnvoyerAvis();
 
@@ -154,4 +163,10 @@ inputPrixMax.addEventListener("input", function () {
   });
   document.querySelector(".fiches").innerHTML = "";
   genererPieces(piecesFiltrees);
+});
+
+// ajout du listener pour mettre à jour des données du LocalStorage
+const boutonMettreAJour = document.querySelector(".btn-maj");
+boutonMettreAJour.addEventListener("click", function () {
+  window.localStorage.removeItem("pieces");
 });
