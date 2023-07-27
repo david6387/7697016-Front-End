@@ -1,5 +1,3 @@
-import { Chart } from "chart.js";
-
 export function ajoutListenersAvis() {
   const piecesElements = document.querySelectorAll(".fiches article button");
 
@@ -47,10 +45,12 @@ export function ajoutListenerEnvoyerAvis() {
   });
 }
 export async function afficherGraphiqueAvis() {
+  // Calcul du nombre total de commentaires par quantité d'étoiles attribuées
   const avis = await fetch("http://localhost:8081/avis").then((avis) =>
     avis.json()
   );
   const nb_commentaires = [0, 0, 0, 0, 0];
+
   for (let commentaire of avis) {
     nb_commentaires[commentaire.nbEtoiles - 1]++;
   }
@@ -59,11 +59,11 @@ export async function afficherGraphiqueAvis() {
   // Données et personnalisation du graphique
   const data = {
     labels: labels,
-    dataset: [
+    datasets: [
       {
-        label: "Etoiles attribuées",
+        label: "Étoiles attribuées",
         data: nb_commentaires.reverse(),
-        backgroundColor: "rgba(255,230,0,1)",
+        backgroundColor: "rgba(255, 230, 0, 1)", // couleur jaune
       },
     ],
   };

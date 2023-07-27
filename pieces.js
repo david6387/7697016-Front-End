@@ -4,20 +4,21 @@ import {
   afficherAvis,
   afficherGraphiqueAvis,
 } from "./avis.js";
+//Récupération des pièces eventuellement stockées dans le localStorage
 let pieces = window.localStorage.getItem("pieces");
 
 if (pieces === null) {
-  // Récupération des pièces depuis le fichier JSON
-  const reponse = await fetch("http://localhost:8081/pieces");
+  // Récupération des pièces depuis l'API
+  const reponse = await fetch("http://localhost:8081/pieces/");
   pieces = await reponse.json();
-  // transformation des pièces en JSON
+  // Transformation des pièces en JSON
   const valeurPieces = JSON.stringify(pieces);
-  // stockage des informations dans le localStorage
+  // Stockage des informations dans le localStorage
   window.localStorage.setItem("pieces", valeurPieces);
 } else {
   pieces = JSON.parse(pieces);
 }
-// appel de la fonction pour ajouter le listener au formulaire
+// on appel la fonction pour ajouter le listener au formulaire
 ajoutListenerEnvoyerAvis();
 
 function genererPieces(pieces) {
@@ -71,6 +72,7 @@ for (let i = 0; i < pieces.length; i++) {
   const id = pieces[i].id;
   const avisJSON = window.localStorage.getItem(`avis-piece-${id}`);
   const avis = JSON.parse(avisJSON);
+
   if (avis !== null) {
     const pieceElement = document.querySelector(`article[data-id="${id}"]`);
     afficherAvis(pieceElement, avis);
@@ -146,7 +148,6 @@ document
   .appendChild(pElement)
   .appendChild(abordablesElements);
 
-//Code Exercice
 const nomsDisponibles = pieces.map((piece) => piece.nom);
 const prixDisponibles = pieces.map((piece) => piece.prix);
 
@@ -181,9 +182,10 @@ inputPrixMax.addEventListener("input", function () {
   genererPieces(piecesFiltrees);
 });
 
-// ajout du listener pour mettre à jour des données du LocalStorage
+// Ajout du listener pour mettre à jour des données du localStorage
 const boutonMettreAJour = document.querySelector(".btn-maj");
 boutonMettreAJour.addEventListener("click", function () {
   window.localStorage.removeItem("pieces");
 });
+
 await afficherGraphiqueAvis();
