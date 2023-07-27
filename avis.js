@@ -1,3 +1,5 @@
+import { Chart } from "chart.js";
+
 export function ajoutListenersAvis() {
   const piecesElements = document.querySelectorAll(".fiches article button");
 
@@ -43,4 +45,39 @@ export function ajoutListenerEnvoyerAvis() {
       body: chargeUtile,
     });
   });
+}
+export async function afficherGraphiqueAvis() {
+  const avis = await fetch("http://localhost:8081/avis").then((avis) =>
+    avis.json()
+  );
+  const nb_commentaires = [0, 0, 0, 0, 0];
+  for (let commentaire of avis) {
+    nb_commentaires[commentaire.nbEtoiles - 1]++;
+  }
+  // Légende qui s'affichera sur la gauche à côté de la barre horizontale
+  const labels = ["5", "4", "3", "2", "1"];
+  // Données et personnalisation du graphique
+  const data = {
+    labels: labels,
+    dataset: [
+      {
+        label: "Etoiles attribuées",
+        data: nb_commentaires.reverse(),
+        backgroundColor: "rgba(255,230,0,1)",
+      },
+    ],
+  };
+  // Objet de configuration final
+  const config = {
+    type: "bar",
+    data: data,
+    options: {
+      indexAxis: "y",
+    },
+  };
+  // Rendu du graphique dans l'élément canvas
+  const graphiqueAvis = new Chart(
+    document.querySelector("#graphique-avis"),
+    config
+  );
 }
